@@ -1,6 +1,6 @@
-# ROS 2 Jazzy Docker Environment
+# ROS 2 Humble Docker Environment
 
-This repository provides a **Docker-based ROS 2 Jazzy (desktop-full)** environment with GUI support, user permissions, and custom setup scripts (`bashrc`, `entrypoint.sh`).
+This repository provides a **Docker-based ROS 2 Humble (desktop-full)** environment with GUI support, user permissions, and custom setup scripts (`bashrc`, `entrypoint.sh`).
 
 It is designed to:
 
@@ -12,7 +12,7 @@ It is designed to:
 
 ### 1. **Dockerfile**
 
-The Dockerfile builds a custom image based on `osrf/ros:jazzy-desktop-full` and performs the following:
+The Dockerfile builds a custom image based on `osrf/ros:humble-desktop-full` and performs the following:
 
 * Installs extra packages (like `nano` and `sudo`).
 * Copies project-specific configs into the container.
@@ -31,7 +31,7 @@ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 * **ROS 2 setup**: Sources the ROS 2 Humble environment (this ensures ROS tools are available in the shell).
 * **Colcon autocompletion**: Enables shell completion for `colcon` (ROS 2 build tool).
 
-> Even though the base image is Jazzy, you’ve provided Humble setup commands. Make sure they match your intended ROS distribution.
+> Even though the base image is Humble, you’ve provided Humble setup commands. Make sure they match your intended ROS distribution.
 
 ### 3. **entrypoint.sh**
 
@@ -63,7 +63,7 @@ docker run -it \
     --ipc=host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     --env=DISPLAY \
-    ros-jazzy
+    ros-humble
 ```
 
 ### X11 Access for GUI
@@ -90,7 +90,7 @@ Here are the Docker concepts applied in this setup:
 ### 1. **Base Image**
 
 ```dockerfile
-FROM osrf/ros:jazzy-desktop-full
+FROM osrf/ros:humble-desktop-full
 ```
 
 * Starts from an official image with ROS 2 preinstalled.
@@ -141,7 +141,7 @@ Layers are cached, so rebuilding only re-runs changed layers.
 
 * **ENTRYPOINT**: Defines the container’s startup script (`entrypoint.sh`).
 * **CMD**: Default arguments passed to entrypoint (`bash` if nothing else is specified).
-* Together: `docker run ros-jazzy ros2 run demo_nodes_cpp talker`
+* Together: `docker run ros-humble ros2 run demo_nodes_cpp talker`
   → runs inside `entrypoint.sh` automatically sourcing ROS.
 
 ### 8. **Environment Variables**
@@ -164,7 +164,7 @@ docker run -it --rm \
     --ipc=host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     --env=DISPLAY \
-    ros-jazzy
+    ros-humble
 ```
 
 ### Run Rviz2:
@@ -181,7 +181,7 @@ rviz2
 docker run -it --rm \
     --user ros \
     --network=host \
-    ros-jazzy ros2 run demo_nodes_cpp talker
+    ros-humble ros2 run demo_nodes_cpp talker
 ```
 
 ## Customization
@@ -222,7 +222,7 @@ Here’s how the container interacts with the host system:
 |  |  | bashrc           | → | Setup colcon, aliases   |  |   |
 |  |  +------------------+   +-------------------------+  |   |
 |  |                                                      |   |
-|  |  ROS 2 Jazzy tools: rviz2, gazebo, ros2 run ...      |   |
+|  |  ROS 2 Humble tools: rviz2, gazebo, ros2 run ...      |   |
 |  +------------------------------------------------------+   |
 |                                                             |
 +-------------------------------------------------------------+

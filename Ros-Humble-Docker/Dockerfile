@@ -1,4 +1,4 @@
-FROM osrf/ros:jazzy-desktop-full
+FROM osrf/ros:humble-desktop-full
 
 
 # Example of installing programs
