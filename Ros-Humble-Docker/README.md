@@ -222,7 +222,7 @@ Here’s how the container interacts with the host system:
 |  |  | bashrc           | → | Setup colcon, aliases   |  |   |
 |  |  +------------------+   +-------------------------+  |   |
 |  |                                                      |   |
-|  |  ROS 2 Humble tools: rviz2, gazebo, ros2 run ...      |   |
+|  |  ROS 2 Humble tools: rviz2, gazebo, ros2 run ...     |   |
 |  +------------------------------------------------------+   |
 |                                                             |
 +-------------------------------------------------------------+
